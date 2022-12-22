@@ -18,8 +18,10 @@ from .tech_new_material.data_tech_new_material import data_tech_new_material
 '''funciones para las rutas de agregar al almacen'''
 #agregar materiales al almacen
 from .new_material.data_new_material import data_new_material
-
+#agregar equipos a almacen
+from .new_serial.new_serial import data_new_serial
 from .new_serial.data_form_new_equipment import data_form_new_equipment
+
 
 
 """
@@ -87,6 +89,8 @@ def new_material():
 @store.route('/new_serial', methods = ['GET','POST'])
 def new_serial():
     if request.method == 'POST':
+        #agregamos los equipos al almacen
+        data_new_serial()
         #actulaziar los datos del almacen
         data_user()
         return redirect(url_for('store.index'))
