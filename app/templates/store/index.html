@@ -1,0 +1,20 @@
+{% extends './base.html' %}
+{% import 'store/macros.html' as macros %}
+{% block title%}{{ super() }} {{g.user.user_name}}{% endblock %}
+
+{% block header%} {% include '/store/header.html' %}  {%endblock%}
+
+{% block body %}
+    <main class="container-fluid row">
+        <section class="col">
+            {% include 'store/route_index/assign_material.html' %}
+            {% block section %}
+            
+            {% endblock %}
+        </section>
+        <section class="col-xs-12 col-sm-4 col-lg-auto">
+            {% include 'store/route_index/materials_store.html' %}
+            {% include 'store/route_index/equipment_store.html' %}
+        </section>
+    </main>
+{% endblock %}

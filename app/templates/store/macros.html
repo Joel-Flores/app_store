@@ -1,0 +1,50 @@
+<!-- listado y cantidad de equipos en almacen -->
+{% macro render_equipment(equipment)%}
+    <tr>
+        <th>{{ equipment.name_model.capitalize() }}</th>
+        <td>{{ equipment.count }}</td>
+    </tr>
+{% endmacro%}
+
+<!-- listado y cantidad de materiales en almacen -->
+{% macro render_materials(materials, count_reel)%}
+    <tr>
+        <th>Carretas</th>
+        <td>{{count_reel.count}}</td>
+    </tr>
+    {% for key, values in materials.items() %}
+    <tr>
+        <th>{{ key.capitalize() }}</th>
+        <td>{{ values }}</td>
+    </tr>
+    {% endfor %}
+{% endmacro%}
+
+<!-- opciones de tecnicos-->
+{% macro render_technical(technicals)%}
+{% for technical in technicals%}
+    <option value="{{technical.id}}">{{technical.user_name.capitalize()}} {{technical.user_lastname.capitalize()}}</option>
+{%endfor%}
+{% endmacro%}
+
+<!-- macros de formulario para agregar materiales al tecnico -->
+{% macro render_title_tech_new_material(technical)%}
+    <h2>Ingrese material para el Tecnico {{technical.user_name.capitalize()}} {{technical.user_lastname.capitalize()}}</h2>
+{% endmacro%}
+{% macro render_option_equipment_tech_new_material(models)%}
+{% for model in models%}
+    <option value="{{model.id}}">{{model.name_model.capitalize()}}</option>
+{%endfor%}
+{% endmacro%}
+
+
+
+<!-- formulario de equipos para series -->
+{% macro render_form_equipment(equipments)%}
+{% for equipment in equipments%}
+<div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Ingrese las series de {{equipment.name_model}}</label>
+    <textarea name="{{equipment.name_model}}" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+</div>
+{%endfor%}
+{% endmacro%}

@@ -1,0 +1,75 @@
+{% extends './store/index.html' %}
+
+{% block title %} {{ super() }} Material {%endblock%}
+{% block section %}
+    {{macros.render_title_tech_new_material(session.get('technical_name'))}}
+    <form action="/store/tech_new_material" method="POST" class="row g-3 m-2">
+        <div class="form-floating col-md-4">
+            <input type="number" name="cable_hdmi" class="form-control" id="inputCity" >
+            <label for="inputCity" class="form-label">Hdmi</label>
+        </div>
+        <div class="form-floating col-md-4">
+            <input type="number" name="cable_rca" class="form-control" id="inputCity">
+            <label for="inputCity" class="form-label">Rca</label>
+        </div>
+        <div class="form-floating col-md-4">
+            <input type="number" name="spliter_two" class="form-control" id="inputCity">
+            <label for="inputCity" class="form-label">Spliter 2</label>
+        </div>
+        <div class="form-floating col-md-4">
+            <input type="number" name="spliter_three" class="form-control" id="inputCity">
+            <label for="inputCity" class="form-label">Spliter 3</label>
+        </div>
+        <div class="form-floating col-md-4">
+            <input type="number" name="remote_control" class="form-control" id="inputZip">
+            <label for="inputZip" class="form-label">Conrtol remoto</label>
+        </div>
+        <div class="form-floating form-floating col-md-4">
+            <input type="number" name="connector_int" class="form-control" id="inputCity">
+            <label for="inputState" class="form-label">Conector int</label>
+        </div>
+        <div class="form-floating col-md-4">
+            <input type="number" name="connector_ext" class="form-control" id="inputCity">
+            <label for="inputState" class="form-label">Conector ext</label>
+        </div>
+        <div class="form-floating col-md-4">
+            <input type="number" name="power_supply" class="form-control" id="inputCity">
+            <label for="inputState" class="form-label">Fuente de poder</label>
+        </div>
+        <div class="form-floating col-md-4">
+            <input type="number" name="q_span" class="form-control" id="inputCity">
+            <label for="inputState" class="form-label">Q-pan</label>
+        </div>
+        <div class="form-floating col-md-4">
+            <input type="number" name="cp_black" class="form-control" id="inputZip">
+            <label for="inputZip" class="form-label">Cable C/P negro</label>
+        </div>
+        <div class="form-floating col-md-4">
+            <input type="number" name="sp_black" class="form-control" id="inputZip">
+            <label for="inputZip" class="form-label">Cable S/P negro</label>
+        </div>
+        <div class="form-floating col-md-4">
+            <input type="number" name="sp_withe" class="form-control" id="inputZip">
+            <label for="inputZip" class="form-label">Cable S/P blanco</label>
+        </div>
+        <div class="form-floating col-md-4">
+            <input type="number" name="satellite_dish" class="form-control" id="inputCity">
+            <label for="inputCity" class="form-label">Antena satelital</label>
+        </div>
+        <div class="form-floating col-md-4">
+            <input type="number" name="lnb" class="form-control" id="inputCity">
+            <label for="inputState" class="form-label">LNB</label>
+        </div>
+        <div class="form-floating col-md-10">
+            <textarea name="series" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="exampleFormControlTextarea1" class="form-label">Ingrese las series </label>
+        </div>
+        <div class="form-floating col-md-10">
+            <textarea name="reel" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="exampleFormControlTextarea1" class="form-label">Ingrese serie de carretas</label>
+        </div>
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-outline-dark">Guardar</button>
+        </div>
+    </form>
+{% endblock %}
