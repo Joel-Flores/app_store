@@ -42,9 +42,6 @@
 <!-- formulario de equipos para series -->
 {% macro render_form_equipment(equipments)%}
 {% for equipment in equipments%}
-<div class="mb-3">
-    <label for="exampleFormControlTextarea1" class="form-label">Ingrese las series de {{equipment.name_model}}</label>
-    <textarea name="{{equipment.name_model}}" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-</div>
+<option value="{{equipment.id}}">{{equipment.name_model}}</option>
 {%endfor%}
 {% endmacro%}

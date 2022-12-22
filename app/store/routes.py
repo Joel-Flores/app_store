@@ -81,12 +81,9 @@ def new_material():
         data_new_material()
         data_user()
         return redirect(url_for('store.index'))
-    
     return render_template('/store/forms/form_new_material.html')
 
-"""
-ingresar nuevos equipos al sistema de almacen
-"""
+#ingresar nuevos equipos al sistema de almacen
 @store.route('/new_serial', methods = ['GET','POST'])
 def new_serial():
     if request.method == 'POST':
