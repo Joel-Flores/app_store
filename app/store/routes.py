@@ -1,21 +1,26 @@
-"""
-importar la configurcion del blueprint
-"""
+#importar la configurcion del blueprint
 from . import store
 
-"""
-importacion de herramientas de flask
-"""
+#importacion de herramientas de flask
 from flask import request, render_template, redirect, url_for
 
-"""
-importacion de los datos del usuario
-"""
+#datos basicos del usuario
 from app.auth.user_data import data_user
+#funcion para la ruta de index
 from .index.data_for_index import data_for_index
+
+'''funciones para las rutas, para una accion para el tecnico'''
+#redireciona a una acion especifica
 from .check_function.data_for_check_function import data_for_check_function
-from .new_serial.data_form_new_equipment import data_form_new_equipment
+#agrega materiales, equipos, carretas al tecnico 
 from .tech_new_material.data_tech_new_material import data_tech_new_material
+
+'''funciones para las rutas de agregar al almacen'''
+#agregar materiales al almacen
+from .new_material.data_new_material import data_new_material
+
+from .new_serial.data_form_new_equipment import data_form_new_equipment
+
 
 """
 pagina pricipal del almacen
@@ -41,7 +46,6 @@ def check_function():
     elif id == 4:
         return redirect(url_for('store.tech_check_material'))
     
-
 #agregar material al tecnico
 @store.route('/tech_new_material', methods = ['GET','POST'])
 def tech_new_material():
@@ -67,18 +71,16 @@ def tech_check_material():
 def tech_check_orders():
     return 'traer las ordenes no revisadas del tecnico'
 
-
-
-
-
-
 """
-ingresar nuevos materiales al sistema del almacen
+rutas para ingresar materiales, equipos, carretas a almacen
 """
+#ingresar nuevos materiales al almacen
 @store.route('/new_material', methods = ['GET','POST'])
 def new_material():
     if request.method == 'POST':
-        return redirect(url_for('store.new_serial'))
+        data_new_material()
+        data_user()
+        return redirect(url_for('store.index'))
     
     return render_template('/store/forms/form_new_material.html')
 
