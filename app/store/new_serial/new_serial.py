@@ -1,4 +1,4 @@
-from flask import g, flash
+from flask import g, flash, request
 from app.db import get_db
 
 from .update_equipment import update_equipment

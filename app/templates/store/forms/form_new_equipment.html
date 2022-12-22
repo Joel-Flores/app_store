@@ -4,9 +4,17 @@
 {% block section %}
     <h1>Equipos para almacen</h1>
     <form action="/store/new_serial" method="POST" class="row g-3">
-        <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Ingrese Series para Almacen</label>
-            <textarea name="series" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <div class="form-floating">
+            <textarea name="cm_mac" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="exampleFormControlTextarea1" class="form-label">Ingrese CM_MAC</label>
+        </div>
+        <div class="form-floating">
+            <textarea name="cm_two" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="exampleFormControlTextarea1" class="form-label">Ingrese CM_MAC_SECUNDARIO</label>
+        </div>
+        <div class="form-floating">
+            <textarea name="card" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="exampleFormControlTextarea1" class="form-label">Ingrese TARJETA</label>
         </div>
         <div class="form-floating col-6">
             <select name="name_equipment" class="form-select" id="floatingSelect" aria-label="Floating label select example">
@@ -17,7 +25,7 @@
             <label for="floatingSelect">Equipo Activos</label>
           </div>
         <div class="col-md-6">
-            <button type="submit" class="btn btn-outline-dark">Guardar</button>
+            <button type="submit" class="btn btn-outline-dark btn-lg">Guardar</button>
         </div>
     </form>
 {% endblock %}
