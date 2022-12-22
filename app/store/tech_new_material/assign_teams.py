@@ -27,6 +27,9 @@ def assign_teams(equipments, tech, user_id):
             values = [serial_id['id']]
             c.execute(query, values)
             #agregamos la serie al tecnico
+            query = 'UPDATE serial_equipments SET status_id = 2 WHERE id = %s;'
+            c.execute(query, values)
+            
             query = 'INSERT INTO equipment_assignment(user_id, serial_id) VALUES(%s,%s)'
             values = [tech_id, serial_id['serial_id']]
             c.execute(query, values)
