@@ -8,5 +8,6 @@ def data_tech_new_material():
     assign_materials()
     #agrega los equipos al tecnico o manda un mensaje de el equipo no se encuantra en el almacen
     assign_teams(request.form['series'].split("\r\n"), session.get('technical_name'), g.user['id'])
+    #agrega las carretas al tecnico y los desvincula del almacen
     assign_reels(request.form['reel'].split("\r\n"), session.get('technical_name'), g.user['id'])
     session['technical_name'] = None

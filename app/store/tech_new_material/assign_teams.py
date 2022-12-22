@@ -7,12 +7,12 @@ def assign_teams(equipments, tech, user_id):
     error = True
     tech_id = tech['id']
     #query para extraer el id del equipo en el almacen y la serie
-    query = '''SELECT ea.id, ea.serial_id
-    FROM equipment_assignment AS ea
-    INNER JOIN serial_equipments AS se ON ea.serial_id = se.id
-    WHERE cm_mac = %s AND ea.user_id = %s AND ea.register_active = TRUE;
-    '''
     for equipment in equipments:
+        query = '''SELECT ea.id, ea.serial_id
+        FROM equipment_assignment AS ea
+        INNER JOIN serial_equipments AS se ON ea.serial_id = se.id
+        WHERE cm_mac = %s AND ea.user_id = %s AND ea.register_active = TRUE;
+        '''
         #agregamos los valores de la serie del equipo y el id del usuario de almacen
         values = [equipment, user_id]
         c.execute(query, values)

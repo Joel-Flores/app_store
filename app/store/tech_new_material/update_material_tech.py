@@ -1,6 +1,7 @@
 from flask import session, flash
+
 def update_material_tech(db, c, added_material):
-    #traemos todos las materiales y el id del tecnico
+    #traemos todos las materiales y el id asignados al tecnico
     tech = session.get('technical_name')
     tech_id = tech['id']
     query = '''SELECT m.id, m.cable_hdmi, m.cable_rca, m.spliter_two, m.spliter_three, m.remote_control,
