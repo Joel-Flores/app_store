@@ -1,6 +1,7 @@
 from flask import g, session, flash
 
 def register_material_tech(db, c, values):
+    user_id = g.user['id']
     #agregar el registro de los materiales asignados al tecnico
     query = '''INSERT INTO materials
     (cable_hdmi, cable_rca, spliter_two, spliter_three, remote_control,
@@ -9,13 +10,13 @@ def register_material_tech(db, c, values):
     lnb, status_id, created_by)
     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'''
     values.append(2)
-    values.append(g.user['id'])
+    values.append(user_id)
     c.execute(query, values)
     db.commit()
     
     #extraemos en id de los materiales que registramos del tecnico
     query = 'SELECT id FROM  materials WHERE created_by = %s ORDER BY id DESC LIMIT 1;'
-    values = [g.user['id']]
+    values = [user_id]
     c.execute(query, values)
     material_id = c.fetchone()
     tech_id = session.get('technical_name')

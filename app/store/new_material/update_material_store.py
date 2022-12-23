@@ -1,8 +1,8 @@
-from flask import g, flash
+from flask import session, flash
 
 def update_material_store(db, c, added_material):
     #traemos todos las materiales y el id asignados al tecnico
-    material_store = g.materials
+    material_store = session.get('materials')
     
     #sumamos los materiales del tecnico con los asignados del almacen
     values = list()

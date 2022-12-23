@@ -58,8 +58,6 @@ def load_logged_in_user():
         g.user= None
     else:
         g.user = user
-        g.materials = session.get('materials')
-        g.equipments = session.get('equipment')
     
 def login_required(view):
     @functools.wraps(view)

@@ -1,6 +1,6 @@
-from flask import g, flash
+from flask import session, flash
 def update_store_material(db, c, added_material):
-    materials_store = g.materials
+    materials_store = session.get('materials')
     error = False
     values = list()
     #descontamos los materiales de almacen asignados al tecnico
