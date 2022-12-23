@@ -18,10 +18,11 @@ from .tech_new_material.data_tech_new_material import data_tech_new_material
 '''funciones para las rutas de agregar al almacen'''
 #agregar materiales al almacen
 from .new_material.data_new_material import data_new_material
-#agregar equipos a almacen
+#agregar equipos al almacen
 from .new_serial.new_serial import data_new_serial
 from .new_serial.data_form_new_equipment import data_form_new_equipment
-
+#agregar carretas al almacen
+from .new_reel.data_new_reel import data_new_reel
 
 
 """
@@ -94,5 +95,17 @@ def new_serial():
         #actulaziar los datos del almacen
         data_user()
         return redirect(url_for('store.index'))
+    #traemos los nombres de los equipos
     json = data_form_new_equipment()
     return render_template('/store/forms/form_new_equipment.html', equipments = json)
+
+#ingresar nuevas carretas a almacen
+@store.route('/new_reel', methods = ['GET','POST'])
+def new_reel():
+    if request.method == 'POST':
+        #agregamos los equipos al almacen
+        data_new_reel()
+        ##actulaziar los datos del almacen
+        data_user()
+        return redirect(url_for('store.index'))
+    return render_template('/store/forms/form_new_reel.html')

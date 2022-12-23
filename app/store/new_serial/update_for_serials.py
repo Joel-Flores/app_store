@@ -9,7 +9,7 @@ def update_for_serials(db, c, cm_macs, cm_twos, cards, model_id, user_id):
         values = [cm_mac]
         c.execute(query, values)
         if c.fetchone() is not None:
-            flash(f'La serie {cm_mac} esta registrado en el sistema')
+            flash(f'La serie: {cm_mac}, esta registrado en el sistema')
             error = True
         else:
             #ingresar las series al sistema
