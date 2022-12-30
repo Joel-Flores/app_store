@@ -12,3 +12,6 @@ def data_tech_new_material():
     #agrega las carretas al tecnico y los desvincula del almacen
     assign_reels(request.form['reel'].split("\r\n"), session.get('technical_name'), user_id)
     session['technical_name'] = None
+    session['technical_materials'] = None
+    session['technical_equipments'] = None
+    session['technical_reels'] = None

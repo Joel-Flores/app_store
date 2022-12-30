@@ -1,15 +1,13 @@
-from flask import session, flash
+from flask import flash
 
-def update_material_store(db, c, added_material):
-    #traemos todos las materiales y el id asignados al tecnico
-    material_store = session.get('materials')
+def update_material(db, c, added_material, material_user):
     
-    #sumamos los materiales del tecnico con los asignados del almacen
+    #sumamos los materiales del usuario con los asignados del almacen
     values = list()
     for key in added_material:
-        values.append(material_store[key] + added_material[key])
+        values.append(material_user[key] + added_material[key])
     
-    values.append(material_store['id'])
+    values.append(material_user['id'])
     #actualizamos los materiales del tecnico
     query = '''UPDATE materials
     SET cable_hdmi = %s,

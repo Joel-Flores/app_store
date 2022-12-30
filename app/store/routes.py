@@ -14,6 +14,8 @@ from .index.data_for_index import data_for_index
 from .check_function.data_for_check_function import data_for_check_function
 #agrega materiales, equipos, carretas al tecnico 
 from .tech_new_material.data_tech_new_material import data_tech_new_material
+#retira los materiales del tecnico 
+from .tech_withdraw_material.data_tech_withdraw_material import data_tech_withdraw_material
 
 '''funciones para las rutas de agregar al almacen'''
 #agregar materiales al almacen
@@ -62,7 +64,13 @@ def tech_new_material():
 #retirar material al tecnico
 @store.route('/tech_withdraw_material', methods = ['GET','POST'])
 def tech_withdraw_material():
-    return 'renderizar formulario para retirar materiales'
+    if request.method == 'POST':
+        json = data_tech_withdraw_material()
+        return json
+        ''' #actulaziar los datos del almacen
+        data_user()
+        return redirect(url_for('store.index')) '''
+    return render_template('/store/form_for_tech/tech_withdraw_material_form.html')
 
 #revisar material del tecnico
 @store.route('/tech_check_material')
@@ -84,7 +92,7 @@ def new_material():
         data_new_material()
         data_user()
         return redirect(url_for('store.index'))
-    return render_template('/store/forms/form_new_material.html')
+    return render_template('/store/forms_for_update_store/form_new_material.html')
 
 #ingresar nuevos equipos al sistema de almacen
 @store.route('/new_serial', methods = ['GET','POST'])
@@ -97,7 +105,7 @@ def new_serial():
         return redirect(url_for('store.index'))
     #traemos los nombres de los equipos
     json = data_form_new_equipment()
-    return render_template('/store/forms/form_new_equipment.html', equipments = json)
+    return render_template('/store/forms_for_update_store/form_new_equipment.html', equipments = json)
 
 #ingresar nuevas carretas a almacen
 @store.route('/new_reel', methods = ['GET','POST'])
@@ -108,4 +116,4 @@ def new_reel():
         ##actulaziar los datos del almacen
         data_user()
         return redirect(url_for('store.index'))
-    return render_template('/store/forms/form_new_reel.html')
+    return render_template('/store/forms_for_update_store/form_new_reel.html')

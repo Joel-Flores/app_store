@@ -1,15 +1,14 @@
+from flask import g, session
 from app.db import get_db
 
-from .name_materials import name_materials
-from .resquiest_form import resquiest_form
-from .register_material_store import register_material_store
-from .update_material_store import update_material_store
+from app.store.for_request_material.for_request_material import for_request_material
+from app.store.register_material.register_material import register_material
+from app.store.register_material.update_material import update_material
+
 def data_new_material():
     db, c = get_db()
     #traemos en una lista los nombres de los materiales
-    name_material = name_materials(c)
-    #ponemos los materiales en un diccionario y una lista
-    material_dict, material_list = resquiest_form(name_material)
+    material_dict, material_list = for_request_material()
     #registramos los materiales al almacen y actualizamos sus materiales sumandolos
-    register_material_store(db, c, material_list)
-    update_material_store(db, c, material_dict)
+    register_material(db, c, material_list, 1, g.user['id'], None)
+    update_material(db, c, material_dict,  session.get('materials'))

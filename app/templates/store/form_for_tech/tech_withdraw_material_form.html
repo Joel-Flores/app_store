@@ -3,8 +3,10 @@
 {% block title %} {{ super() }} Material {%endblock%}
 {% block section %}
     {{macros.render_title_tech_new_material(session.get('technical_name'))}}
-    <h3 class="text-center">Asignar Material</h3>
-    <form action="/store/tech_new_material" method="POST" class="row g-3 m-2">
+    <h3 class="text-center">Retirar Material</h3>
+
+    <form action="/store/tech_withdraw_material" method="POST" class="row g-3 m-2">
+        <h4>Materiales del Tecnico</h4>
         <div class="form-floating col-md-4">
             <input type="number" name="cable_hdmi" class="form-control" id="inputCity" >
             <label for="inputCity" class="form-label">Hdmi: {{session.get('technical_materials').cable_hdmi}}</label>
@@ -61,16 +63,13 @@
             <input type="number" name="lnb" class="form-control" id="inputCity">
             <label for="inputState" class="form-label">LNB: {{session.get('technical_materials').lnb}}</label>
         </div>
-        <div class="form-floating col-md-10">
-            <textarea name="series" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            <label for="exampleFormControlTextarea1" class="form-label">Ingrese las series </label>
-        </div>
-        <div class="form-floating col-md-10">
-            <textarea name="reel" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            <label for="exampleFormControlTextarea1" class="form-label">Ingrese serie de carretas</label>
-        </div>
+        <h4>Equipos del Tecnico</h4>
+        {{macros.render_equipment_for_withdraw(session.get('technical_equipments'))}}
+        <h4>Carretas del Tecnico</h4>
+        {{macros.render_reel_for_withdraw(session.get('technical_reels'))}}
         <div class="col-md-12">
             <button type="submit" class="btn btn-outline-dark">Guardar</button>
         </div>
     </form>
+
 {% endblock %}
