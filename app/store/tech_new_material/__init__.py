@@ -1,9 +1,11 @@
-from flask import request,session, g
+from flask import request,session, g, redirect, url_for
+from app.auth.user_data import data_user
 
 from .assign_teams import assign_teams
 from .assign_materials import assign_materials
 from .assign_reels import assign_reels
-def data_tech_new_material():
+
+def logic_tech_new_material():
     user_id = g.user['id']
     #actualizamos y registramos los materiales de tecnico y del almacen
     assign_materials()
@@ -15,3 +17,6 @@ def data_tech_new_material():
     session['technical_materials'] = None
     session['technical_equipments'] = None
     session['technical_reels'] = None
+    #actulaziar los datos del almacen
+    data_user()
+    return redirect(url_for('store.index'))

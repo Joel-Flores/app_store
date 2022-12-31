@@ -1,4 +1,4 @@
-from flask import request, session, g
+from flask import request, session
 from werkzeug.security import check_password_hash
 
 from app.db import get_db
@@ -12,7 +12,7 @@ def init_session():
     error = None
     
     #bucamos si el usuario esta registrado
-    query = '''SELECT u.id, u.password, u.register_active, s.user_name, s.user_lastname, p.position
+    query = '''SELECT u.id, u.password, u.register_active, s.user_name, s.user_lastname, p.id AS position
 	FROM user AS u
 	INNER JOIN staff AS s
     ON u.staff_id = s.id
@@ -40,7 +40,8 @@ def init_session():
         
         session.clear()
         session['user'] = user
-        return user['position'], 'Bienvenido'
+        error = f'{user["user_name"]} {user["user_lastname"]}, Bienvenido!'
+        return user['position'], error
     
     #mandamos error en caso de que falle las verificaciones
-    return 0, error
+    return False, error

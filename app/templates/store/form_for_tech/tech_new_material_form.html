@@ -5,70 +5,9 @@
     {{macros.render_title_tech_new_material(session.get('technical_name'))}}
     <h3 class="text-center">Asignar Material</h3>
     <form action="/store/tech_new_material" method="POST" class="row g-3 m-2">
-        <div class="form-floating col-md-4">
-            <input type="number" name="cable_hdmi" class="form-control" id="inputCity" >
-            <label for="inputCity" class="form-label">Hdmi: {{session.get('technical_materials').cable_hdmi}}</label>
-        </div>
-        <div class="form-floating col-md-4">
-            <input type="number" name="cable_rca" class="form-control" id="inputCity">
-            <label for="inputCity" class="form-label">Rca: {{session.get('technical_materials').cable_rca}}</label>
-        </div>
-        <div class="form-floating col-md-4">
-            <input type="number" name="spliter_two" class="form-control" id="inputCity">
-            <label for="inputCity" class="form-label">Spliter 2: {{session.get('technical_materials').spliter_two}}</label>
-        </div>
-        <div class="form-floating col-md-4">
-            <input type="number" name="spliter_three" class="form-control" id="inputCity">
-            <label for="inputCity" class="form-label">Spliter 3: {{session.get('technical_materials').spliter_three}}</label>
-        </div>
-        <div class="form-floating col-md-4">
-            <input type="number" name="remote_control" class="form-control" id="inputZip">
-            <label for="inputZip" class="form-label">Conrtol remoto: {{session.get('technical_materials').remote_control}}</label>
-        </div>
-        <div class="form-floating form-floating col-md-4">
-            <input type="number" name="connector_int" class="form-control" id="inputCity">
-            <label for="inputState" class="form-label">Conector int: {{session.get('technical_materials').connector_int}}</label>
-        </div>
-        <div class="form-floating col-md-4">
-            <input type="number" name="connector_ext" class="form-control" id="inputCity">
-            <label for="inputState" class="form-label">Conector ext: {{session.get('technical_materials').connector_ext}}</label>
-        </div>
-        <div class="form-floating col-md-4">
-            <input type="number" name="power_supply" class="form-control" id="inputCity">
-            <label for="inputState" class="form-label">Fuente de poder: {{session.get('technical_materials').power_supply}}</label>
-        </div>
-        <div class="form-floating col-md-4">
-            <input type="number" name="q_span" class="form-control" id="inputCity">
-            <label for="inputState" class="form-label">Q-pan: {{session.get('technical_materials').q_span}}</label>
-        </div>
-        <div class="form-floating col-md-4">
-            <input type="number" name="cp_black" class="form-control" id="inputZip">
-            <label for="inputZip" class="form-label">Cable C/P negro: {{session.get('technical_materials').cp_black}}</label>
-        </div>
-        <div class="form-floating col-md-4">
-            <input type="number" name="sp_black" class="form-control" id="inputZip">
-            <label for="inputZip" class="form-label">Cable S/P negro: {{session.get('technical_materials').sp_black}}</label>
-        </div>
-        <div class="form-floating col-md-4">
-            <input type="number" name="sp_withe" class="form-control" id="inputZip">
-            <label for="inputZip" class="form-label">Cable S/P blanco: {{session.get('technical_materials').sp_withe}}</label>
-        </div>
-        <div class="form-floating col-md-4">
-            <input type="number" name="satellite_dish" class="form-control" id="inputCity">
-            <label for="inputCity" class="form-label">Antena satelital: {{session.get('technical_materials').satellite_dish}}</label>
-        </div>
-        <div class="form-floating col-md-4">
-            <input type="number" name="lnb" class="form-control" id="inputCity">
-            <label for="inputState" class="form-label">LNB: {{session.get('technical_materials').lnb}}</label>
-        </div>
-        <div class="form-floating col-md-10">
-            <textarea name="series" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            <label for="exampleFormControlTextarea1" class="form-label">Ingrese las series </label>
-        </div>
-        <div class="form-floating col-md-10">
-            <textarea name="reel" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            <label for="exampleFormControlTextarea1" class="form-label">Ingrese serie de carretas</label>
-        </div>
+        {% include 'store/parts_of_the_form/template_material_tech.html'%}
+        {% include 'store/parts_of_the_form/template_input_cm_mac.html'%}
+        {% include 'store/parts_of_the_form/template_reel.html'%}
         <div class="col-md-12">
             <button type="submit" class="btn btn-outline-dark">Guardar</button>
         </div>

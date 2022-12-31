@@ -4,10 +4,7 @@
 {% block section %}
     <h1>Carretas para Almacen</h1>
     <form action="/store/new_reel" method="POST" class="row g-3">
-        <div class="form-floating">
-            <textarea name="reels" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            <label for="exampleFormControlTextarea1" class="form-label">Ingrese Serie de Carretas</label>
-        </div>
+        {% include 'store/parts_of_the_form/template_reel.html'%}
         <div class="col-md-6">
             <button type="submit" class="btn btn-outline-dark btn-lg">Guardar</button>
         </div>

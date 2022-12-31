@@ -9,8 +9,7 @@ import functools
 from app.db import get_db
 
 from .new_user import new_user
-from .init_session import init_session
-from .user_data import data_user
+from .login import logic_login
 
 #regitrar a un nuevo usuario
 @auth.route('/register', methods = ['GET','POST'])
@@ -28,18 +27,8 @@ def register():
 def login():
     #verificamos el metodo post
     if request.method == 'POST':
-        #hacemos una validacion del usuario y el password
-        position_id, message = init_session()
-        if position_id == 0:
-            flash(message)
-            return render_template('auth/login.html')
-        flash(message)
-        data_user()
-        if position_id == 'Tecnico':
-            return redirect(url_for('tech.index'))
-        else:
-            return redirect(url_for('store.index'))
-        
+        #mandamos la logica a la funcion que se ocupa de la logica
+        return logic_login()
     return render_template('auth/login.html')
 
 #cerrar session del usuario

@@ -13,10 +13,12 @@
         <td>{{count_reel.count}}</td>
     </tr>
     {% for key, values in materials.items() %}
+    {%if key != 'id'%}
     <tr>
         <th>{{ key.capitalize() }}</th>
         <td>{{ values }}</td>
     </tr>
+    {%endif%}
     {% endfor %}
 {% endmacro%}
 

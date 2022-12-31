@@ -7,7 +7,7 @@
     </tr>
   </thead>
   <tbody>
-    {% for equipment in session.get('equipment') %}
+    {% for equipment in session.get('equipment_count') %}
     {{macros.render_equipment(equipment)}}
     {% endfor %}
   </tbody>
