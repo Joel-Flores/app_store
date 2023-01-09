@@ -1,14 +1,12 @@
 from flask import flash
+from app.warehouse_function import register, insert_store
 
-def update_reels(db, c, reels):
-    reel_id = list()
+def update_reels(db, c, reels, user_id):
     error = False
+    
     for reel in reels:
         #traemos datos del sistema para no repetir series
-        query = '''SELECT *
-        FROM cable_reel
-        WHERE serials = %s;
-        '''
+        query = 'SELECT * FROM cable_reel WHERE serial = %s;'
         values = [reel]
         c.execute(query, values)
         #controlamos si la serie ya esta registrada
@@ -17,18 +15,7 @@ def update_reels(db, c, reels):
             error = True
         else:
             #ingresar carretas al sistema
-            query = 'INSERT INTO cable_reel (serials, status_id) VALUES (%s, %s);'
-            values = [reel, 1]
-            c.execute(query, values)
-            db.commit()
-            
-            #traer el id de la serie subida y guardarlo en una lista
-            
-            query = '''SELECT id
-            FROM cable_reel
-            WHERE serials = %s order by id DESC LIMIT 1;
-            '''
-            values = [reel]
-            c.execute(query, values)
-            reel_id.append(c.fetchone())
-    return reel_id, error
+            reel_id = register.reel(db, c, reel, user_id)
+            #asignamos la carretas al almacen
+            insert_store.reel(db, c, user_id, reel_id['id'], 1)
+    return error

@@ -1,7 +1,7 @@
-def equipment(db, c, cm_mac,cm_mac_two,card_number, model_id, registered_by):
+def equipment(db, c, values, registered_by):
     query = '''INSERT INTO equipments_serial(cm_mac,cm_mac_two,card_number, model_id, registered_by) 
     VALUES(%s, %s, %s, %s, %s);'''
-    values = [cm_mac,cm_mac_two,card_number, model_id, registered_by]
+    values.append(registered_by)
     c.execute(query, values)
     query = 'SELECT id FROM equipments_serial WHERE registered_by = %s ORDER BY id DESC LIMIT 1;'
     db.commit()

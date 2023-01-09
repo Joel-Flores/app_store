@@ -5,7 +5,7 @@
         <select name="id_technical" class="form-select" id="floatingSelect" aria-label="Floating label select example">
           <option selected>Selecciona Tecnico</option>
           <!-- listar tecnicos en tecnicos que estan activos -->
-          {{macros.render_technical(session.get('technical'))}}
+          {{macros.render_technical(session.get('technical_active'))}}
         </select>
         <label for="floatingSelect">Tecnicos Activos</label>
       </div>

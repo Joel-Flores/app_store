@@ -54,8 +54,8 @@
       <p class="card-text">Tarjeta: {{equipment.card_number}}</p>
       {%endif%}
       <div class="form-check form-check-reverse">
-        <input class="form-check-input" type="checkbox" name="{{equipment.cm_mac}}" value="True" id="reverseCheck1">
-        <label class="form-check-label" for="reverseCheck1">Equipo Devuelto</label>
+        <input class="form-check-input" type="checkbox" name="{{equipment.cm_mac}}" value="True">
+        <label class="form-check-label">Equipo Devuelto</label>
       </div>
     </div>
 </div>
@@ -68,10 +68,10 @@
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">Serie de la Carreta</h5>
-      <p class="card-text">{{reel.serials}}</p>
+      <p class="card-text">{{reel.serial}}</p>
       <div class="form-check form-check-reverse">
-        <input class="form-check-input" type="checkbox" name="{{reel.serials}}" value="True" id="reverseCheck1">
-        <label class="form-check-label" for="reverseCheck1">Carreta Devuelta</label>
+        <input class="form-check-input" type="checkbox" name="{{reel.serial}}" value="True">
+        <label class="form-check-label">Carreta Devuelta</label>
       </div>
     </div>
 </div>

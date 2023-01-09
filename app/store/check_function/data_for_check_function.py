@@ -17,21 +17,16 @@ def data_for_check_function():
     tech_id = int(request.form['id_technical'])
     
     #obtenemos los datos del tecnico
-    technical = session.get('technical')
-    technical = tech_name(tech_id, technical)
-    session['technical_name'] = technical
+    session['technical_name'] = tech_name(tech_id, session.get('technical_active'))
     
     #obtenemos los materiales actuales que tiene el tecnico
-    technical = tech_material(c, tech_id)
-    session['technical_materials'] = technical
+    session['technical_materials'] = tech_material(c, tech_id)
     
     #obtenemos los equipos actuales que tiene el tecnico
-    technical= tech_equipment(c, tech_id)
-    session['technical_equipments'] = technical
+    session['technical_equipments'] = tech_equipment(c, tech_id)
     
     #obtenemos las carretas actuales que tiene el tecnico
-    technical = tech_reel(c, tech_id)
-    session['technical_reels'] = technical
+    session['technical_reels'] = tech_reel(c, tech_id)
     
     #revisamos los que funcion realizara para el tecnico
     return int(request.form['type_function'])

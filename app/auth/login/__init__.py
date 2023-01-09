@@ -8,8 +8,9 @@ def logic_login():
         return render_template('auth/login.html')
     flash(message)
     data_user()
-    if position_id == 1:
+    if position_id == 3:
         return redirect(url_for('tech.index'))
-    else:
-        print('ingreso')
+    elif position_id == 2:
         return redirect(url_for('store.index'))
+    else:
+        return redirect(url_for('admin.index'))

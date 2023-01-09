@@ -1,12 +1,21 @@
+from flask import flash
 from app.db import get_db
 
-from .update_store_reel import update_store_reel
-from .update_tech_reel import update_tech_reel
+from app.warehouse_function import delete, insert, search
 
 def assign_reels(reels, tech, user_id):
     db, c = get_db()
-    #retirar las carretas del resgistro del almacen
-    reel_id = update_store_reel(db, c, reels, user_id)
-    #asignar carretas al tecnico
-    update_tech_reel(db, c, reel_id, tech['id'])
-    return reel_id
+    error = False
+    for reel in reels:
+        #buscar id de la carreta
+        reel_id = search.id_reel(c, reel)
+        if reel_id is None:
+            flash('carreta no registrada')
+            error = True
+        else:
+            #retirar las carretas del resgistro del almacen
+            delete.reel(db, c, reel_id['id'])
+            #asignar carreta al registro del tecnico
+            insert.reel(db, c, tech['id'], reel_id['id'], user_id, 3)
+    if error is False:
+        flash('carretas asignados al tecnico') 
