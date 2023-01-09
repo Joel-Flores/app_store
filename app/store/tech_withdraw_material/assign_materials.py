@@ -13,13 +13,12 @@ def assign_materials(user_id, material_user, tech, material_tech):
     #descontamos los materiales del tecnico
     error = update.update_tech_store(db, c, material_dict, material_tech, False)
     if error is False:
-        insert.material(db, c, tech['id'], material['id'], user_id, 4)
         #actualizamos materiales del almacen
         error = update.update_tech_store(db, c, material_dict, material_user, True)
         if error is False:
-            insert_store.material(db, c, user_id, material['id'], 4)
-            flash('materiales asignado correctamente')
+            insert.material(db, c, tech['id'], material['id'], user_id, 4)
+            flash('materiales registrados')
         else:
-            flash('no se registro al alamcen, error las las cantidades digitadas')
+            flash('no se registro al almacen, error las las cantidades digitadas')
     else:
         flash('no se registro al almacen, error las las cantidades digitadas')
