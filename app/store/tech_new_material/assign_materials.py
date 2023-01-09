@@ -2,7 +2,7 @@ from flask import flash
 from app.db import get_db
 
 from app.for_request_material import request_material
-from app.warehouse_function import insert, register, update, insert_store
+from app.warehouse_function import insert, register, update, insert
 
 def assign_materials(material_user, user_id, material_tech, tech):
     db, c = get_db()
@@ -13,7 +13,7 @@ def assign_materials(material_user, user_id, material_tech, tech):
     #descontamos los materiales del almacen
     error = update.update_tech_store(db, c, material_dict, material_user, False)
     if error is False:
-        insert_store.material(db, c, user_id, material['id'], 3)
+        insert.material(db, c, user_id, material['id'], 3)
         #actualizamos materiales del technico
         error = update.update_tech_store(db, c, material_dict, material_tech, True)
         if error is False:
