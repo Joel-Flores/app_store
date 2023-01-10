@@ -25,7 +25,7 @@ def new_material():
         response, messages = logic_new_material()
         message_in_flash(messages)
         return response
-    return render_template('/store/forms_for_update_store/form_new_material.html')
+    return render_template('/store/tigo_store/form_new_material.html')
 
 #ingresar nuevos equipos al sistema de almacen
 @store.route('/new_serial', methods = ['GET','POST'])
@@ -35,7 +35,7 @@ def new_serial():
         message_in_flash(messages)
         return response
     #traemos los nombres de los equipos
-    return render_template('/store/forms_for_update_store/form_new_equipment.html', equipments = get_new_serial())
+    return render_template('/store/tigo_store/form_new_equipment.html', equipments = get_new_serial())
 
 #ingresar nuevas carretas a almacen
 @store.route('/new_reel', methods = ['GET','POST'])
@@ -44,4 +44,4 @@ def new_reel():
         response, messages = logic_new_reel()
         message_in_flash(messages)
         return response
-    return render_template('/store/forms_for_update_store/form_new_reel.html')
+    return render_template('/store/tigo_store/form_new_reel.html')

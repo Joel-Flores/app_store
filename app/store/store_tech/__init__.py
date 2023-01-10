@@ -29,7 +29,7 @@ def tech_new_material():
         response, message = logic_tech_new_material()
         message_in_flash(message)
         return response
-    return render_template('/store/form_for_tech/tech_new_material_form.html')
+    return render_template('/store/store_tech/tech_new_material_form.html')
 
 #retirar material al tecnico
 @store.route('/tech_withdraw_material', methods = ['GET','POST'])
@@ -38,7 +38,7 @@ def tech_withdraw_material():
         response, message = logic_tech_withdraw_material()
         message_in_flash(message)
         return response
-    return render_template('/store/form_for_tech/tech_withdraw_material_form.html')
+    return render_template('/store/store_tech/tech_withdraw_material_form.html')
 
 #revisar material del tecnico
 @store.route('/tech_check_material')
