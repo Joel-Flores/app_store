@@ -1,0 +1,12 @@
+{% extends './store/index.html' %}
+
+{% block title %} {{ super() }} | retirar equipos {%endblock%}
+{% block section %}
+    <h1>Equipos para almacen</h1>
+    <form action="/store/withdraw_equipment" method="POST" class="row g-3">
+        {% include 'store/parts_of_the_form/template_input_cm_mac.html'%}
+        <div class="col-md-6">
+            <button type="submit" class="btn btn-outline-dark btn-lg">Guardar</button>
+        </div>
+    </form>
+{% endblock %}
