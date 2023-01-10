@@ -6,3 +6,4 @@ from . import routes
 from . import tigo_store
 from . import store_tech
 from . import store_tigo
+from . import equipment_invoice_client
