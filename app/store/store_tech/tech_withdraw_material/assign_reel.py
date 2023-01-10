@@ -14,6 +14,8 @@ def assign_reel(user_id, tech, tech_reel):
         if option['bool'] is not False:
             #eliminamos los registros de signacion al tecnico
             delete.reel(db, c, option['id'])
+            #eliminamos la carreta del registro del almacen
+            delete.cable_reel(db, c, option['id'])
             #agregamos al registro que devolio el equipo
             insert.reel(db, c, user_id, option['id'], tech['id'], 4)
     message.append('carretas devuletas a almacen')
