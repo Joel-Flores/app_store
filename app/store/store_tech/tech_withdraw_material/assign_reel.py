@@ -5,6 +5,7 @@ from .request_reel_withdraw import request_reel_withdraw
 from app.warehouse_function import delete, insert
 
 def assign_reel(user_id, tech, tech_reel):
+    message = list()
     db, c = get_db()
     #mandamos los equipos del tecnico, cuales equipos devolivio
     options = request_reel_withdraw(tech_reel)
@@ -15,4 +16,5 @@ def assign_reel(user_id, tech, tech_reel):
             delete.reel(db, c, option['id'])
             #agregamos al registro que devolio el equipo
             insert.reel(db, c, user_id, option['id'], tech['id'], 4)
-    flash('carretas devuletas a almacen')
+    message.append('carretas devuletas a almacen')
+    return message

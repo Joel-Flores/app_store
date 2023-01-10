@@ -2,6 +2,7 @@ from flask import flash
 from app.warehouse_function import register, insert, update
 
 def update_reels(db, c, reels, user_id):
+    message = list()
     error = False
     
     for reel in reels:
@@ -13,11 +14,11 @@ def update_reels(db, c, reels, user_id):
         #controlamos si la serie ya esta registrada
         if data is not None:
             update.reel(db, c, data['id'])
-            flash(f'la carreta con la serie: {reel}, ya esta registrado')
+            message.append(f'la carreta con la serie: {reel}, ya esta registrado')
             error = True
         else:
             #ingresar carretas al sistema
             reel_id = register.reel(db, c, reel, user_id)
             #asignamos la carretas al almacen
             insert.reel(db, c, user_id, reel_id['id'],user_id, 1)
-    return error
+    return error, message

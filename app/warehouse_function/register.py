@@ -17,6 +17,7 @@ def material(db, c, values, registered_by):
     values.append(registered_by)
     c.execute(query, values)
     db.commit()
+    
     query = 'SELECT id FROM materials WHERE registered_by = %s ORDER BY id DESC LIMIT 1;'
     values = [registered_by]
     c.execute(query, values)
