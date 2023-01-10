@@ -1,0 +1,13 @@
+{% extends './store/index.html' %}
+
+{% block title %} {{ super() }} | equipos con cliente {%endblock%}
+{% block section %}
+    <h1>Equipos Facturado al Tecnico</h1>
+    <form action="/store/invoice_tech" method="POST" class="row g-3">
+        {% include 'store/parts_of_the_form/template_list_tech.html'%}
+        {% include 'store/parts_of_the_form/template_input_cm_mac.html'%}
+        <div class="col-md-6">
+            <button type="submit" class="btn btn-outline-dark btn-lg">Guardar</button>
+        </div>
+    </form>
+{% endblock %}

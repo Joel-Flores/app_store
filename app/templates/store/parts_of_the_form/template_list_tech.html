@@ -1,0 +1,8 @@
+<div class="form-floating col-md-12">
+    <select name="id_technical" class="form-select" id="floatingSelect">
+      <option selected>Selecciona Tecnico</option>
+      <!-- listar tecnicos en tecnicos que estan activos -->
+      {{macros.render_technical(session.get('technical_active'))}}
+    </select>
+    <label for="floatingSelect">Tecnicos Activos</label>
+</div>
