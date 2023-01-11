@@ -7,7 +7,6 @@ from .reels import data_count_reel, data_series_reel
 def data_user():
     db, c = get_db()
     user = session.get('user')
-    session.clear()
     
     user_id = user['id']
     session['user'] = user
