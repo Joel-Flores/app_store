@@ -9,7 +9,9 @@ def logic_check_function():
     elif id == 2:
         response = redirect(url_for('store.tech_withdraw_material'))
     elif id == 3:
-        response = redirect(url_for('store.tech_check_orders'))
+        response = redirect(url_for('store.tech_check_all'))
     elif id == 4:
-        response = redirect(url_for('store.tech_check_material'))
+        response = redirect(url_for('store.tech_check_orders'))
+    else:
+        response
     return response

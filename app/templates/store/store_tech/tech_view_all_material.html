@@ -1,0 +1,38 @@
+{% extends './store/index.html' %}
+
+{% block title %} {{ super() }} Material Tecnico {%endblock%}
+{% block section %}
+    {{macros.render_title_tech_new_material(session.get('technical_name'))}}
+    <h3 class="p-2 m-2">Material</h3>
+    <table class="table table-striped p-2 m-2">
+        <thead>
+            <tr>
+              <th scope="col">Material</th>
+              <th scope="col">Monto</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{macros.render_materials(session.get('technical_materials'))}}
+        </tbody>
+    </table>
+    <h3 class="p-2 m-2">Carretas</h3>
+    <table class="table table-striped p-2 m-2">
+        <tbody>
+            {{macros.render_list_reel(session.get('technical_reels'))}}
+        </tbody>
+    </table>
+    <h3 class="p-2 m-2">Equipos</h3>
+    <table class="table table-striped p-2 m-2">
+        <thead>
+            <tr>
+              <th scope="col">Modelo</th>
+              <th scope="col">Cm mac</th>
+              <th scope="col">Cm mac 2</th>
+              <th scope="col">Tarjeta</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{macros.render_list_equipment(session.get('technical_equipments'))}}
+        </tbody>
+    </table>
+{% endblock %}

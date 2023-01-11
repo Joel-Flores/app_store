@@ -6,10 +6,9 @@ from flask import request, render_template, flash
 
 '''funciones para las rutas, para una accion para el tecnico'''
 from .check_function import logic_check_function
-#agrega materiales, equipos, carretas al tecnico 
 from .tech_new_material import logic_tech_new_material
-#retira los materiales del tecnico 
 from .tech_withdraw_material import logic_tech_withdraw_material
+from .tech_check_all import logic_tech_check_all
 
 def message_in_flash(messages):
     for message in messages:
@@ -40,10 +39,11 @@ def tech_withdraw_material():
         return response
     return render_template('/store/store_tech/tech_withdraw_material_form.html')
 
-#revisar material del tecnico
-@store.route('/tech_check_material')
-def tech_check_material():
-    return 'traer todos los materiales que tiene el tecnico'
+#revisar equipos del tecnico
+@store.route('/tech_check_all')
+def tech_check_all():
+    return render_template('/store/store_tech/tech_view_all_material.html')
+
 
 #revisar ordenes ejecutadas del tecnico
 @store.route('/store/tech_check_orders')

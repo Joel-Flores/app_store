@@ -6,21 +6,73 @@
     </tr>
 {% endmacro%}
 
-<!-- listado y cantidad de materiales en almacen -->
-{% macro render_materials(materials, count_reel)%}
+<!-- listado y cantidad de carretas -->
+{% macro render_reel_count(reel)%}
     <tr>
         <th>Carretas</th>
-        <td>{{count_reel.count}}</td>
+        <td>{{reel.count}}</td>
     </tr>
-    {% for key, values in materials.items() %}
-    {%if key != 'id'%}
+{% endmacro %}
+
+<!-- listado y cantidad de materiales -->
+{% macro render_materials(materials)%}
     <tr>
-        <th>{{ key.capitalize() }}</th>
-        <td>{{ values }}</td>
+        <th>Cable Hdmi</th>
+        <td>{{materials.cable_hdmi}}</td>
     </tr>
-    {%endif%}
-    {% endfor %}
-{% endmacro%}
+    <tr>
+        <th>Cable Rca</th>
+        <td>{{materials.cable_rca}}</td>
+    </tr>
+    <tr>
+        <th>Spliter de 1x2</th>
+        <td>{{materials.spliter_two}}</td>
+    </tr>
+    <tr>
+        <th>Spliter de 1x3</th>
+        <td>{{materials.spliter_three}}</td>
+    </tr>
+    <tr>
+        <th>Control Remoto</th>
+        <td>{{materials.remote_control}}</td>
+    </tr>
+    <tr>
+        <th>Conector Inrerno</th>
+        <td>{{materials.connector_int}}</td>
+    </tr>
+    <tr>
+        <th>Conector Externo</th>
+        <td>{{materials.connector_ext}}</td>
+    </tr>
+    <tr>
+        <th>Fuente de Poder</th>
+        <td>{{materials.power_supply}}</td>
+    </tr>
+    <tr>
+        <th>Q-Span</th>
+        <td>{{materials.q_span}}</td>
+    </tr>
+    <tr>
+        <th>Cable con Portante</th>
+        <td>{{materials.cp_black}}</td>
+    </tr>
+    <tr>
+        <th>Cable sin Portante</th>
+        <td>{{materials.sp_black}}</td>
+    </tr>
+    <tr>
+        <th>Cable sin Portante Blanco</th>
+        <td>{{materials.sp_withe}}</td>
+    </tr>
+    <tr>
+        <th>Antena Parabolica</th>
+        <td>{{materials.satellite_dish}}</td>
+    </tr>
+    <tr>
+        <th>LNB</th>
+        <td>{{materials.lnb}}</td>
+    </tr>
+{% endmacro %}
 
 <!-- opciones de tecnicos-->
 {% macro render_technical(technicals)%}
@@ -33,6 +85,7 @@
 {% macro render_title_tech_new_material(technical)%}
     <h2 class="text-center">Tecnico: {{technical.user_name.capitalize()}} {{technical.user_lastname.capitalize()}}</h2>
 {% endmacro%}
+
 <!-- macros de formulario para agregar materiales al tecnico -->
 {% macro render_option_equipment_tech_new_material(models)%}
 {% for model in models%}
@@ -63,7 +116,7 @@
 {% endmacro%}
 
 <!-- macros de formulario retirar carretas del tecnico -->
-{% macro render_reel_for_withdraw(reels)%}
+{% macro render_reel_for_withdraw(reels) %}
 {% for reel in reels%}
 <div class="card">
     <div class="card-body">
@@ -78,10 +131,31 @@
 {%endfor%}
 {% endmacro%}
 
-
 <!-- formulario para agregar equipos con sus series -->
-{% macro render_form_equipment(equipments)%}
+{% macro render_form_equipment(equipments) %}
 {% for equipment in equipments%}
 <option value="{{equipment.id}}">{{equipment.name_model}}</option>
+{%endfor%}
+{% endmacro%}
+
+<!-- listado de equipos -->
+{% macro render_list_equipment(equipments) %}
+{% for equipment in equipments%}
+    <tr>
+        <th>{{equipment.name_model}}</th>
+        <td>{{equipment.cm_mac}}</td>
+        <td>{{equipment.cm_mac_two}}</td>
+        <td>{{equipment.card_number}}</td>
+    </tr>
+{%endfor%}
+{% endmacro%}
+
+<!-- listado de carretas -->
+{% macro render_list_reel(reels) %}
+{% for reel in reels %}
+    <tr>
+        <th>Serie</th>
+        <td>{{reel.serial}}</td>
+    </tr>
 {%endfor%}
 {% endmacro%}
