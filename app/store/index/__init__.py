@@ -3,12 +3,14 @@ imoprtamos las herramientas necesarias
 """
 from app.db import get_db
 from flask import session, render_template
+from app.auth.user_data import data_user
 """
 importamos los modulos
 """
 from .data_technicals import data_technical
 def logic_index():
     db , c = get_db()
+    data_user()
     #guarda el id , nombre, apellido de los tecnicos
     session['technical_active'] = data_technical(c)
     ''' #sacamos la version json del la consulta
