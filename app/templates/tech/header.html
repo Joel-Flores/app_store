@@ -1,0 +1,44 @@
+<header class="navbar navbar-expand-lg navbar-dark bg-dark container-fluid">
+    <a class="navbar-brand" href="/tech">{{session.get('user').user_name.capitalize()}} {{session.get('user').user_lastname.capitalize()}}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <nav class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Materiales para Almacen
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/store/new_material">Ingresar Materiales</a></li>
+                  <li><a class="dropdown-item" href="/store/new_serial">Ingresar Equipos</a></li>
+                  <li><a class="dropdown-item" href="/store/new_reel">Ingresar Carretas</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="/store/invoice_tech">Facturar Equipo al Tecnico</a></li>
+                  <li><a class="dropdown-item" href="/store/equipment_client">Ingresar Equipos con cliente</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Materiales para Tigo
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/store/withdraw_material">Ingresar Materiales a enviar</a></li>
+                  <li><a class="dropdown-item" href="/store/withdraw_equipment">Ingresar Equipos a enviar</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Detalles de Material
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Ver Equipos en Almacen</a></li>
+                  <li><a class="dropdown-item" href="#">Ver Equipos con cliente</a></li>
+                  <li><a class="dropdown-item" href="#">Ver Equipos Facturados</a></li>
+                  <!-- <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+                </ul>
+            </li>
+        </ul>
+        <a class="navbar-brand" href="/auth/logout">Cerrar Session</a>    
+    </nav>
+</header>

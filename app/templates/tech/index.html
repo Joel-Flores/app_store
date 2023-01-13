@@ -1,0 +1,22 @@
+{% extends './base.html' %}
+{% import 'store/macros.html' as macros %}
+{% block title%}{{ super() }} {{g.user.user_name}}{% endblock %}
+
+{% block header%} {% include '/tech/header.html' %}  {%endblock%}
+
+{% block body %}
+    <main class="container-fluid row">
+        <section class="col">
+            {% block section %}
+            <p>{{session.get('user')}}</p>
+            <p>{{session.get('equipment_serials')}}</p>
+            <p>{{session.get('reel_series')}}</p>
+            {% endblock %}
+        </section>
+        <section class="col-xs-12 col-sm-4 col-lg-auto">
+            <p>{{session.get('reel_count')}}</p>
+            <p>{{session.get('materials')}}</p>
+            <p>{{session.get('equipment_count')}}</p>
+        </section>
+    </main>
+{% endblock %}

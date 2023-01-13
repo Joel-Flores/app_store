@@ -1,5 +1,5 @@
 from . import tech
-from flask import session, abort
+from flask import session, abort, render_template
 from app.auth.routes import login_required
 from app.auth.user_data import data_user
 
@@ -14,4 +14,4 @@ def requeriment():
 def index():
     requeriment()
     data_user()
-    return 'hola'
+    return render_template('/tech/index.html')
