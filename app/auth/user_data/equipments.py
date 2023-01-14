@@ -10,7 +10,7 @@ def data_count_equipments(c, user_id):
     return c.fetchall()
 
 def data_serials_equipments(c, user_id):   
-    query = '''SELECT e.id, s.cm_mac, m.name_model
+    query = '''SELECT e.id, s.cm_mac, s.cm_mac_two, s.card_number, m.name_model
     FROM equipments_assignment AS e
     INNER JOIN equipments_serial AS s ON e.serial_id = s.id
     INNER JOIN equipments_model AS m ON s.model_id = m.id

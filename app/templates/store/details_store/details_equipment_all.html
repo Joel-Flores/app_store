@@ -1,0 +1,27 @@
+{% extends './store/index.html' %}
+
+{% block title %} {{ super() }} | equipos En Almacen {%endblock%}
+{% block section %}
+<h2 class="text-center">Encargado de Almacen: {{session.get('user').user_name.capitalize()}} {{session.get('user').user_lastname.capitalize()}}</h2>
+{% include 'store/parts_of_the_form/template_option_model.html'%}
+<h3 class="p-2 m-2">Todas las Carretas</h3>
+    <table class="table table-striped p-2 m-2">
+        <tbody>
+            {{macros.render_list_reel(session.get('reel_series'))}}
+        </tbody>
+    </table>
+<h3 class="p-2 m-2">Todos los Equipos</h3>
+    <table class="table table-striped p-2 m-2">
+        <thead>
+            <tr>
+              <th scope="col">Modelo</th>
+              <th scope="col">Cm mac</th>
+              <th scope="col">Cm mac 2</th>
+              <th scope="col">Tarjeta</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{macros.render_list_equipment(session.get('equipment_serials'))}}
+        </tbody>
+    </table>
+{% endblock %}

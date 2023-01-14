@@ -142,10 +142,23 @@
 {% macro render_list_equipment(equipments) %}
 {% for equipment in equipments%}
     <tr>
-        <th>{{equipment.name_model}}</th>
+    {% if not equipment.created_in %}
+        <th>{{equipment.name_model.capitalize()}}</th>
+    {% endif %}
         <td>{{equipment.cm_mac}}</td>
+    {% if not equipment.cm_mac_two or equipment.cm_mac_two == '0' %}
+        <td>Sin Segunda serial</td>
+    {% else %}
         <td>{{equipment.cm_mac_two}}</td>
+    {% endif %}
+    {% if not equipment.card_number %}
+        <td>Sin Tarjeta</td>
+    {% else %}
         <td>{{equipment.card_number}}</td>
+    {% endif %}
+    {% if equipment.created_in %}
+        <td>{{equipment.created_in}}</td>
+    {% endif %}
     </tr>
 {%endfor%}
 {% endmacro%}

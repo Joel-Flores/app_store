@@ -1,0 +1,26 @@
+{% extends './store/index.html' %}
+
+{% block title %} {{ super() }} | equipos En Almacen {%endblock%}
+{% block section %}
+<h2 class="text-center">Encargado de Almacen: {{session.get('user').user_name.capitalize()}} {{session.get('user').user_lastname.capitalize()}}</h2>
+{% include 'store/parts_of_the_form/template_option_model.html'%}
+{% if equipment_filter %}
+<h3 class="p-2 m-2">Equipos filtrados por el modelo: {{equipment_filter.0.name_model.capitalize()}}</h3>
+<h4 class="text-center">{{equipment_filter.0.status_material.capitalize()}}</h4>
+<table class="table table-striped p-2 m-2">
+    <thead>
+        <tr>
+          <th scope="col">Cm mac</th>
+          <th scope="col">Cm mac 2</th>
+          <th scope="col">Tarjeta</th>
+          <th scope="col">Fecha de ingreso</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{macros.render_list_equipment(equipment_filter)}}
+    </tbody>
+</table>
+{% else %}
+<p>No tienes equipos cargados con cliente</p>
+{% endif %}
+{% endblock %}
