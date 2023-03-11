@@ -1,20 +1,19 @@
-#importar la configurcion del blueprint
 from . import store
 from flask import session, abort
 from app.auth.routes import login_required
-#funcion para la ruta de index
-from .index import logic_index
+
+from .route_index import get_index
 
 def requeriment():
     user = session.get('user')
     if user['position'] != 2:
         session.clear()
-        abort(404)
-        
+        abort(404)        
+
 """
 pagina pricipal del almacen"""
 @store.route('/')
 @login_required
 def index():
     requeriment()
-    return logic_index()
+    return get_index()

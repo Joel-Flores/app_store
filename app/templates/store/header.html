@@ -1,5 +1,5 @@
 <header class="navbar navbar-expand-lg navbar-dark bg-dark container-fluid">
-        <a class="navbar-brand" href="/store">{{session.get('user').user_name.capitalize()}} {{session.get('user').user_lastname.capitalize()}}</a>
+        <a class="navbar-brand" href="{{url_for('store.index')}}">{{session.get('user').user_name.capitalize()}} {{session.get('user').user_lastname.capitalize()}}</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <nav class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -9,12 +9,12 @@
                         Materiales para Almacen
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="/store/new_material">Ingresar Materiales</a></li>
-                      <li><a class="dropdown-item" href="/store/new_serial">Ingresar Equipos</a></li>
-                      <li><a class="dropdown-item" href="/store/new_reel">Ingresar Carretas</a></li>
+                      <li><a class="dropdown-item" href="{{url_for('store.new_material')}}">Ingresar Materiales</a></li>
+                      <li><a class="dropdown-item" href="{{url_for('store.new_serial')}}">Ingresar Equipos</a></li>
+                      <li><a class="dropdown-item" href="{{url_for('store.new_reel')}}">Ingresar Carretas</a></li>
                       <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="/store/invoice_tech">Facturar Equipo al Tecnico</a></li>
-                      <li><a class="dropdown-item" href="/store/equipment_client">Ingresar Equipos con cliente</a></li>
+                      <li><a class="dropdown-item" href="{{url_for('store.invoice_tech')}}">Facturar Equipo al Tecnico</a></li>
+                      <li><a class="dropdown-item" href="{{url_for('store.equipment_client')}}">Ingresar Equipos con cliente</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -22,8 +22,8 @@
                         Materiales para Tigo
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="/store/withdraw_material">Ingresar Materiales a enviar</a></li>
-                      <li><a class="dropdown-item" href="/store/withdraw_equipment">Ingresar Equipos a enviar</a></li>
+                      <li><a class="dropdown-item" href="{{url_for('store.withdraw_material')}}">Ingresar Materiales a enviar</a></li>
+                      <li><a class="dropdown-item" href="{{url_for('store.withdraw_equipment')}}">Ingresar Equipos a enviar</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -31,13 +31,13 @@
                         Detalles de Material
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="/store/details_equipment">Ver Equipos en Almacen</a></li>
-                      <li><a class="dropdown-item" href="#">Ver Equipos Facturados</a></li>
+                      <li><a class="dropdown-item" href="{{url_for('store.details_equipment')}}">Ver Equipos en Almacen</a></li>
+                      <li><a class="dropdown-item" href="{{url_for('store.details_invoice')}}">Ver Equipos Facturados</a></li>
                       <!-- <li><hr class="dropdown-divider"></li>
                       <li><a class="dropdown-item" href="#">Something else here</a></li> -->
                     </ul>
                 </li>
             </ul>
-            <a class="navbar-brand" href="/auth/logout">Cerrar Session</a>    
+            <a class="navbar-brand" href="{{url_for('auth.logout')}}">Cerrar Session</a>    
         </nav>
     </header>

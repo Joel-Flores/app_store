@@ -1,40 +1,31 @@
 #importar la del bp de auth
 from . import auth
 
-#importacion de frameworks
-from flask import render_template, redirect, url_for, request, session, flash, g
+from flask import redirect, url_for, request, session, flash, g
 import functools
 
-#importacion de la conexion a la base de datos
-from app.db import get_db
-
-from .new_user import new_user
-from .login import logic_login
+from .route_register import post_register, get_register
+from .route_login import post_login, get_login
 
 #regitrar a un nuevo usuario
 @auth.route('/register', methods = ['GET','POST'])
 def register():
-    #verificamos que el metodo sea post
     if request.method == 'POST':
-        #mandamos a la funcion de registrar usuarios y redireccionamos a login
-        flash(new_user())
-        return redirect(url_for('auth.login'))
-    #si el metodo es get mandamos el formulario de registro
-    return render_template('auth/register.html')
+        return post_register()
+
+    return get_register()
     
 #iniciar sesion del usuaio
 @auth.route('/login', methods = ['GET','POST'])
 def login():
-    #verificamos el metodo post
     if request.method == 'POST':
-        #mandamos la logica a la funcion que se ocupa de la logica
-        return logic_login()
-    return render_template('auth/login.html')
+        return post_login()
+    
+    return get_login()
 
 #cerrar session del usuario
 @auth.route('/logout')
 def logout():
-    #borramos todos los datos y devolvemos al login
     session.clear()
     return redirect(url_for('auth.login'))
 
