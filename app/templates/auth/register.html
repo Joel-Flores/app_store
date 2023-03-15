@@ -1,8 +1,8 @@
-{% extends './auth/index.html' %}
+{% extends './store/index.html' %}
 
-{% block title %} {{ super() }} register {%endblock%}
-{% block main %}
-    <h1>Registrarse</h1>
+{% block title %} Registrar usuario {%endblock%}
+{% block section %}
+    <h1>Registra nuevo usuario</h1>
     <form action="/auth/register" method="POST">
         <div class="row mb-3">
           <label for="inputEmail3" class="col-sm-2 col-form-label">Username</label>
@@ -17,6 +17,6 @@
           </div>
         </div>
         
-        <button type="submit" class="btn btn-primary">Sign in</button>
+        <button type="submit" class="btn btn-primary">Registrar</button>
       </form>
 {% endblock %}

@@ -9,4 +9,4 @@ export FLASK_DATABASE_PASSWORD=''
 export FLASK_DATABASE_USER=''
 export FLASK_DATABASE=''
 
-la app esta diseñada para la gestion de un almacen de manejo de materiales de tigo y tecnicos a un a empresa terciaria
+la app esta diseñada para la gestion de un almacen de manejo de materiales y tecnicos para una empresa terciaria

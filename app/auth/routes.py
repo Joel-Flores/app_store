@@ -6,14 +6,6 @@ import functools
 
 from .route_register import post_register, get_register
 from .route_login import post_login, get_login
-
-#regitrar a un nuevo usuario
-@auth.route('/register', methods = ['GET','POST'])
-def register():
-    if request.method == 'POST':
-        return post_register()
-
-    return get_register()
     
 #iniciar sesion del usuaio
 @auth.route('/login', methods = ['GET','POST'])
@@ -47,3 +39,12 @@ def login_required(view):
             return redirect(url_for('auth.login'))
         return view(**kwargs)
     return wrapped_view
+
+#regitrar a un nuevo usuario
+@auth.route('/register', methods = ['GET','POST'])
+@login_required
+def register():
+    if request.method == 'POST':
+        return post_register()
+
+    return get_register()
